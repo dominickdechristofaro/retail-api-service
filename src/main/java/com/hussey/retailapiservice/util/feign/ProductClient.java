@@ -13,5 +13,8 @@ public interface ProductClient {
     List<Product> findAll();
 
     @RequestMapping(value = "/product/byName/{productName}", method = RequestMethod.GET)
-    List<Product> findProductByProductName(@PathVariable String productName);
+    List<Product> findProductByProductName(@PathVariable String productname);
+
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    Product findProduct(@PathVariable int id);
 }

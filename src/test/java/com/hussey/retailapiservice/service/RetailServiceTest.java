@@ -1,6 +1,6 @@
 package com.hussey.retailapiservice.service;
 import com.hussey.retailapiservice.model.Product;
-import com.hussey.retailapiservice.util.feign.ProductClient;
+import com.hussey.retailapiservice.util.feign.*;
 import com.hussey.retailapiservice.viewmodel.ProductViewModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,10 @@ public class RetailServiceTest {
     // Properties
     private RetailService retailService;
     private ProductClient productClient;
+    private CustomerClient customerClient;
+    private InvoiceClient invoiceClient;
+    private LevelUpClient levelUpClient;
+    private InventoryClient inventoryClient;
 
     private Product product1 = buildProduct(1, "name1", "description1", new BigDecimal("9.99"), new BigDecimal("2.99"));
     private Product product2 = buildProduct(2, "name2", "description2", new BigDecimal("14.99"), new BigDecimal("4.99"));
@@ -24,7 +28,7 @@ public class RetailServiceTest {
     @BeforeEach
     public void setUp() throws Exception {
         setUpProductClientMock();
-        retailService = new RetailService(productClient);
+        retailService = new RetailService(productClient, customerClient, invoiceClient, levelUpClient, inventoryClient);
     }
 
     // Tests
